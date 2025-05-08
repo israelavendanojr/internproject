@@ -37,3 +37,10 @@ The bug fixes should be *production level* fixes. Some things to think about:
 6. When you're finished, create a git bundle with the command 'git bundle create your_name.bundle master' and send the generated bundle file to your SPIE contact.
 
 In order to verify your git bundle, you can un-bundle the repo by cloning the bundle file (git clone your_name.bundle).  Then change into the new directory that was generated, and run 'git pull origin master'.  At this point, the directory should look exactly as you left it before you bundled!
+
+
+# Write Up
+1. Fixed search profiles text box by adjusting height to match image
+2. Fixed profile information bug by refactoring ProfileCollection.cs/GetProfile()
+3. Fixed non-number ID in URL bug by redirecting to home page
+4. Fixed invalid ID in URL bug by adding null info to profiles if needed, as well as a precautionary null check if model passed is null in Profile.cshtml
