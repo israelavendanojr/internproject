@@ -21,7 +21,8 @@
             <tr>
                 <td>
                     <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span> <br>
-                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="float:left;font-size:18px;height:30px;padding:4px;  border: solid 1px #bfc0c1;">
+                    <!-- I adjusted the height manually of txtSearch for now, we could also set the height as the image height dynamically for modularity through CSS flexboxing or JS scripts, but that may be overengineering for this issue -->
+                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="float:left;font-size:18px;height:40px;padding:4px;  border: solid 1px #bfc0c1;">
                     <a id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" border="0"></a>
                 </td>
 
