@@ -11,6 +11,12 @@ namespace WebApplication.Controllers
     {
         public ActionResult profileView(string id)
         {
+            // redirect to homepage if id passed is not string (checks if int readable)
+            if (!int.TryParse(id, out int profileId))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ProfileModel model = new ProfileModel(Int32.Parse(id));
 
             if (model == null)
