@@ -15,11 +15,22 @@ namespace WebApplication.Models.Profile
 
             Profiles.Business.Profile userProfile = collection.GetProfile(ID);
 
-            FullName = userProfile.FirstName + " " + userProfile.LastName;
-            SPIERole = userProfile.SPIERole;
-            Company = userProfile.Company;
-            JobTitle = userProfile.JobTitle;
-            PictureFileName = userProfile.PictureFileName;
+            if (userProfile == null)
+            {
+                FullName = "Not Found";
+                SPIERole = "Not Available";
+                Company = "Not Available";
+                JobTitle = "Not Available";
+                PictureFileName = "jimbob.jpg";
+            }
+            else
+            {
+                FullName = userProfile.FirstName + " " + userProfile.LastName;
+                SPIERole = userProfile.SPIERole;
+                Company = userProfile.Company;
+                JobTitle = userProfile.JobTitle;
+                PictureFileName = userProfile.PictureFileName;
+            }
 
         }
 

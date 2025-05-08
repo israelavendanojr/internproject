@@ -13,7 +13,13 @@ namespace WebApplication.Controllers
         {
             ProfileModel model = new ProfileModel(Int32.Parse(id));
 
+            if (model == null)
+            {
+                return View("Profile", null);
+            }
+
             return View("Profile", model);
+
         }
     }
 }

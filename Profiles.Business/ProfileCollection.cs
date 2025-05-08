@@ -63,7 +63,7 @@ namespace Profiles.Business
         {
             var profile = ProfileList.FirstOrDefault(p => p.ID == ID);
             if (profile == null)
-                throw new Exception($"Profile with ID {ID} not found.");
+                return null;
 
             return profile;
         }
