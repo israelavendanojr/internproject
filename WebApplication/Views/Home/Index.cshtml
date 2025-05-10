@@ -10,6 +10,7 @@
     <table>
         <tbody>
             <tr>
+            <tr>
                 <td colspan="2">
                     <div style="padding: 37px 60px 16px 0px;">
                         <span class="formText07" style="color: #000000; font-size: 36px; letter-spacing: 0px; line-height: 39px;">
@@ -20,17 +21,21 @@
             </tr>
             <tr>
                 <td>
-                    <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span> <br>
-                    <!-- I adjusted the height manually of txtSearch for now, we could also set the height as the image height dynamically for modularity through CSS flexboxing or JS scripts, but that may be overengineering for this issue -->
-                    <input name="txtSearch" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch" style="float:left;font-size:18px;height:40px;padding:4px;  border: solid 1px #bfc0c1;">
-                    <a id="hSearch" style="height:30px;cursor:pointer;" onmouseout="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Norm.jpg';" onmouseover="document.getElementById('imgSearch').src='/images/MagGlass_Btn_Over.jpg';"><img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" border="0"></a>
+                    <form method="GET" action="/profile/search">
+                        <span class="formText01" style="color: #000000; font-size: 20px;">Search Profiles</span> <br>
+                        <input name="query" type="text" maxlength="100" id="txtSearch" class="formFieldCommon inputSearch"
+                               style="float:left;font-size:18px;height:40px;padding:4px; border: solid 1px #bfc0c1;"
+                               placeholder="Enter a name..." />
+                        <button type="submit" style="height:40px; margin-left:10px; cursor:pointer;">
+                            <img id="imgSearch" src="/images/MagGlass_Btn_Norm.jpg" alt="Search" />
+                        </button>
+                    </form>
                 </td>
 
                 <td>
                     <span class="formText01" style="color: #000000; font-size: 20px;">New to SPIE Profiles?</span> <br>
                     <a id="ctl00_Main_hCreateAccount" class="SignUp" href="/account/create/accountinfo">Sign Up</a>
                     <span class="formText07" style="font-size: 15px;">Create your profile today! <br>It's free and easy.</span>
-
                 </td>
 
 

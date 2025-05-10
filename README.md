@@ -40,6 +40,7 @@ In order to verify your git bundle, you can un-bundle the repo by cloning the bu
 
 
 # Write Up
+0. Studied codebase and to understand enviroment and made strong effort to follow coding handwriting of thos before me
 1. Fixed search profiles text box by adjusting height to match image
 2. Fixed profile information bug by refactoring ProfileCollection.cs/GetProfile()
 3. Fixed non-number ID in URL bug by redirecting to home page

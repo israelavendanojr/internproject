@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models.Profile;
+using Profiles.Business;
 
 namespace WebApplication.Controllers
 {
@@ -27,5 +28,20 @@ namespace WebApplication.Controllers
             return View("Profile", model);
 
         }
+
+        public ActionResult Search(string query)
+        {
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return View("ProfileSearch", new List<ProfileModel>());
+            }
+
+            ProfileCollection profileCollection = new ProfileCollection();
+            var results = profileCollection.SearchProfiles(query);
+
+            return View("ProfileSearch", results);
+        }
+
     }
 }

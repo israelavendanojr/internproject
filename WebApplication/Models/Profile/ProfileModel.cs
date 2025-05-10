@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Profiles.Business;
 
 namespace WebApplication.Models.Profile
 {
     public class ProfileModel
     {
+        public string FullName;
+        public string SPIERole;
+        public string Company;
+        public string JobTitle;
+        public string PictureFileName;
 
         public ProfileModel(int ID)
         {
             ProfileCollection collection = new ProfileCollection();
-
             Profiles.Business.Profile userProfile = collection.GetProfile(ID);
 
             if (userProfile == null)
@@ -31,14 +32,6 @@ namespace WebApplication.Models.Profile
                 JobTitle = userProfile.JobTitle;
                 PictureFileName = userProfile.PictureFileName;
             }
-
         }
-
-
-        public string FullName;
-        public string SPIERole;
-        public string Company;
-        public string JobTitle;
-        public string PictureFileName;
     }
 }

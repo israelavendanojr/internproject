@@ -1,0 +1,31 @@
+﻿@model List<Profiles.Business.Profile>
+
+@{
+    ViewBag.Title = "Search Results";
+}
+
+<h2>Search Results</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var profile in Model)
+        {
+            <li>
+                <a href="/profiles/view/@profile.ID">
+                    <img src="/images/profilepictures/@profile.PictureFileName" alt="@profile.FirstName" height="50" />
+                    @profile.FirstName @profile.LastName - @profile.Company
+                </a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No profiles to display.</p>
+}

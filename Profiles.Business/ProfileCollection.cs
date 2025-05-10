@@ -68,5 +68,14 @@ namespace Profiles.Business
             return profile;
         }
 
+        public List<Profile> SearchProfiles(string query)
+        {
+            return ProfileList
+                .Where(p => p.FirstName.Contains(query) ||
+                            p.LastName.Contains(query))
+                .ToList();
+        }
+
     }
+
 }
