@@ -70,9 +70,13 @@ namespace Profiles.Business
 
         public List<Profile> SearchProfiles(string query)
         {
+            if (query == null)
+                return new List<Profile>();
+
+            
             return ProfileList
-                .Where(p => p.FirstName.Contains(query) ||
-                            p.LastName.Contains(query))
+                .Where(p => p.FirstName.ToLower().Contains(query.ToLower()) ||
+                            p.LastName.ToLower().Contains(query.ToLower()))
                 .ToList();
         }
 

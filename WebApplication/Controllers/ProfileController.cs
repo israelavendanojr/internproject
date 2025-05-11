@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
 
             if (string.IsNullOrWhiteSpace(query))
             {
-                return View("ProfileSearch", new List<ProfileModel>());
+                return RedirectToAction("Index", "Home");
             }
 
             ProfileCollection profileCollection = new ProfileCollection();
