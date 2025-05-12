@@ -15,5 +15,8 @@ namespace Profiles.Business
         public string JobTitle;
         public string PictureFileName;
         public int ID;
+        // User Info
+        public string Username;
+        public string Password;
     }
 }

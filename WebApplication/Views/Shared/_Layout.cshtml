@@ -21,6 +21,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    <!-- Check user login state, if logged in, show logout, else, show log in -->
+                    @if (Session["User"] != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Profile")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Profile")</li>
+                    }
+
                 </ul>
             </div>
         </div>

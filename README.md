@@ -45,3 +45,12 @@ In order to verify your git bundle, you can un-bundle the repo by cloning the bu
 2. Fixed profile information bug by refactoring ProfileCollection.cs/GetProfile()
 3. Fixed non-number ID in URL bug by redirecting to home page
 4. Fixed invalid ID in URL bug by adding null info to profiles if needed, as well as a precautionary null check if model passed is null in Profile.cshtml
+
+5. Added search for partial or full username matches
+6. Added whitespace management, redirects to home page if search bar is submitted empty
+
+7. Added Login/Logout button to nav bar Views/Shared/Layout
+8. Modified ProfileModel to include Username and Password
+9. Populated User credentials in ProfileCollection and added validation method
+10. Added Login/Logout functionality to ProfileController
+11. Created Login View

@@ -3,7 +3,7 @@ using Profiles.Business;
 
 namespace WebApplication.Models.Profile
 {
-    public class ProfileModel
+    public class UserModel
     {
         public string FullName;
         public string SPIERole;
@@ -11,10 +11,7 @@ namespace WebApplication.Models.Profile
         public string JobTitle;
         public string PictureFileName;
 
-        // Additional info for user accounts, in production user info would be much less available and more secure, but for proof of concept we will ignore things such as password hashing, username validation, etc
-        public string Username;
-        public string Password;
-        public ProfileModel(int ID)
+        public UserModel(int ID)
         {
             ProfileCollection collection = new ProfileCollection();
             Profiles.Business.Profile userProfile = collection.GetProfile(ID);
@@ -34,7 +31,6 @@ namespace WebApplication.Models.Profile
                 Company = userProfile.Company;
                 JobTitle = userProfile.JobTitle;
                 PictureFileName = userProfile.PictureFileName;
-
             }
         }
     }

@@ -23,7 +23,10 @@ namespace Profiles.Business
                     Company = "SPIE",
                     SPIERole = "SPIE Member",
                     JobTitle = "UX/UI Designer",
-                    PictureFileName = "jimbob.jpg"
+                    PictureFileName = "jimbob.jpg",
+                    Username = "JimBob",
+                    Password = "JimBobPassword"
+
                 },
                 new Profile()
                 {
@@ -33,7 +36,10 @@ namespace Profiles.Business
                     Company = "SPIE",
                     SPIERole = "SPIE Fellow",
                     JobTitle = "Optics & Photonics Researcher",
-                    PictureFileName = "samanthajohnson.jpg"
+                    PictureFileName = "samanthajohnson.jpg",
+                    Username = "SammyGirl",
+                    Password = "SamSam"
+
                 },
                 new Profile()
                 {
@@ -43,7 +49,9 @@ namespace Profiles.Business
                     Company = "NASA",
                     SPIERole = "SPIE Conference Chair",
                     JobTitle = "Astrophysicist",
-                    PictureFileName = "jackiezope.jpg"
+                    PictureFileName = "jackiezope.jpg",
+                    Username = "Jackstar123",
+                    Password = "Password"
                 },
                  new Profile()
                 {
@@ -53,7 +61,9 @@ namespace Profiles.Business
                     Company = "Blue Origins",
                     SPIERole = "SPIE Member",
                     JobTitle = "Embedded Optical Engineer",
-                    PictureFileName = "jonathonwatkinson.jpg"
+                    PictureFileName = "jonathonwatkinson.jpg",
+                    Username = "Jon",
+                    Password = "Jon"
                 }
             };
         }
@@ -78,6 +88,12 @@ namespace Profiles.Business
                 .Where(p => p.FirstName.ToLower().Contains(query.ToLower()) ||
                             p.LastName.ToLower().Contains(query.ToLower()))
                 .ToList();
+        }
+
+        // Method to validate the user credentials during login
+        public Profile ValidateUser(string username, string password)
+        {
+            return ProfileList.FirstOrDefault(p => p.Username == username && p.Password == password);
         }
 
     }

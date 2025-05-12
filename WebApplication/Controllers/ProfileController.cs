@@ -12,7 +12,7 @@ namespace WebApplication.Controllers
     {
         public ActionResult profileView(string id)
         {
-            // redirect to homepage if id passed is not string (checks if int readable)
+            // Redirect to homepage if id passed is not string (checks if int readable)
             if (!int.TryParse(id, out int profileId))
             {
                 return RedirectToAction("Index", "Home");
@@ -43,5 +43,43 @@ namespace WebApplication.Controllers
             return View("ProfileSearch", results);
         }
 
+        // Display login page
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        // Handle login logic
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            // Create an instance of ProfileCollection
+            ProfileCollection profileCollection = new ProfileCollection();
+
+            // Validate the user credentials using the ValidateUser method
+            var userProfile = profileCollection.ValidateUser(username, password);
+
+            if (userProfile != null)
+            {
+                // Simulate user login by storing user data in session
+                Session["User"] = userProfile.Username;
+
+                // Redirect to the profile page or home page
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                // If login fails, return to login page with an error message
+                ViewBag.ErrorMessage = "Invalid username or password.";
+                return View();
+            }
+        }
+
+        // Handle logout
+        public ActionResult Logout()
+        {
+            Session["User"] = null;  // Clear session data
+            return RedirectToAction("Index", "Home");  // Redirect to the home page
+        }
     }
 }

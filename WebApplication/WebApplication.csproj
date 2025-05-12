@@ -163,6 +163,7 @@
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Profile\ProfileSearch.cshtml" />
+    <Content Include="Views\Profile\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
