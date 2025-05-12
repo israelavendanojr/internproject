@@ -78,6 +78,11 @@ namespace Profiles.Business
             return profile;
         }
 
+        public Profile GetUserProfileByUsername(string username)
+        {
+            return ProfileList.FirstOrDefault(p => p.Username.Equals(username));
+        }
+
         public List<Profile> SearchProfiles(string query)
         {
             if (query == null)

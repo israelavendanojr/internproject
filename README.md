@@ -48,9 +48,10 @@ In order to verify your git bundle, you can un-bundle the repo by cloning the bu
 
 5. Added search for partial or full username matches
 6. Added whitespace management, redirects to home page if search bar is submitted empty
+7. Added ProfileSearch View
 
-7. Added Login/Logout button to nav bar Views/Shared/Layout
-8. Modified ProfileModel to include Username and Password
-9. Populated User credentials in ProfileCollection and added validation method
-10. Added Login/Logout functionality to ProfileController
-11. Created Login View
+8. Added Login/Logout button to nav bar Views/Shared/Layout
+9. Modified ProfileModel to include Username and Password
+10. Populated User credentials in ProfileCollection and added validation method
+11. Added Login/Logout functionality to ProfileController
+12. Created Login View

@@ -25,7 +25,9 @@
                     <!-- Check user login state, if logged in, show logout, else, show log in -->
                     @if (Session["User"] != null)
                     {
+                        <li>@Html.ActionLink("Edit Profile", "Edit", "Profile", new { id = Session["UserProfileID"] }, null)</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Profile")</li>
+
                     }
                     else
                     {

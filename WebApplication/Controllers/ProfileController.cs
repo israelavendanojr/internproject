@@ -43,7 +43,6 @@ namespace WebApplication.Controllers
             return View("ProfileSearch", results);
         }
 
-        // Display login page
         public ActionResult Login()
         {
             return View("Login");
@@ -53,33 +52,77 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            // Create an instance of ProfileCollection
             ProfileCollection profileCollection = new ProfileCollection();
 
-            // Validate the user credentials using the ValidateUser method
+            // Validate and get user credentials
             var userProfile = profileCollection.ValidateUser(username, password);
 
             if (userProfile != null)
             {
-                // Simulate user login by storing user data in session
+                // Login by storing user state in session
                 Session["User"] = userProfile.Username;
+                Session["UserProfileID"] = userProfile.ID;
 
-                // Redirect to the profile page or home page
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // If login fails, return to login page with an error message
-                ViewBag.ErrorMessage = "Invalid username or password.";
-                return View();
+                return View("Login");
             }
         }
 
-        // Handle logout
         public ActionResult Logout()
         {
-            Session["User"] = null;  // Clear session data
-            return RedirectToAction("Index", "Home");  // Redirect to the home page
+            Session["User"] = null;
+            return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Edit(int id)
+        {
+            ProfileCollection profileCollection = new ProfileCollection();
+
+            // Ensure the user is logged in
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Profile");
+            }
+
+            // Ensure the user is editing their own profile
+            var userProfile = profileCollection.GetProfile(id);
+            if (userProfile == null || userProfile.Username != Session["User"].ToString())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            // Return the Edit view with the profile data
+            return View(userProfile); // Passing Profile object directly to the view
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Profile profile)
+        {
+            ProfileCollection profileCollection = new ProfileCollection();
+
+            if (ModelState.IsValid)
+            {
+                // Find and update the profile in the collection
+                var userProfile = profileCollection.GetProfile(profile.ID);
+                if (userProfile != null)
+                {
+                    // Update the properties
+                    userProfile.FirstName = profile.FirstName;
+                    userProfile.LastName = profile.LastName;
+                    userProfile.Company = profile.Company;
+                    userProfile.SPIERole = profile.SPIERole;
+                    userProfile.JobTitle = profile.JobTitle;
+                    userProfile.PictureFileName = profile.PictureFileName;
+
+                    return RedirectToAction("ProfileView", new { id = userProfile.ID });
+                }
+            }
+
+            return View(profile);
+        }
+
     }
 }

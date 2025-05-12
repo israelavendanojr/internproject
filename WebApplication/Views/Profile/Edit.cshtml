@@ -1,0 +1,44 @@
+﻿@model Profiles.Business.Profile
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<h2>Edit Profile</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ID)
+
+    <div>
+        <label for="FirstName">First Name:</label>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="LastName">Last Name:</label>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="Company">Company:</label>
+        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="SPIERole">SPIE Role:</label>
+        @Html.TextBoxFor(m => m.SPIERole, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="JobTitle">Job Title:</label>
+        @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="PictureFileName">Profile Picture:</label>
+        @Html.TextBoxFor(m => m.PictureFileName, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
