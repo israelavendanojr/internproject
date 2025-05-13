@@ -48,7 +48,6 @@ namespace WebApplication.Controllers
             return View("Login");
         }
 
-        // Handle login logic
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
@@ -87,26 +86,25 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Login", "Profile");
             }
 
-            // Ensure the user is editing their own profile
+            
             var userProfile = profileCollection.GetProfile(id);
             if (userProfile == null || userProfile.Username != Session["User"].ToString())
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            // Return the Edit view with the profile data
-            return View(userProfile); // Passing Profile object directly to the view
+            return View(userProfile); 
         }
 
         [HttpPost]
-        public ActionResult Edit(Profile profile)
+        public ActionResult Edit(int id, Profile profile)
         {
             ProfileCollection profileCollection = new ProfileCollection();
 
             if (ModelState.IsValid)
             {
-                // Find and update the profile in the collection
-                var userProfile = profileCollection.GetProfile(profile.ID);
+                // Find and update the profile by ID
+                Profile userProfile = profileCollection.GetProfile(id);
                 if (userProfile != null)
                 {
                     // Update the properties
@@ -121,8 +119,10 @@ namespace WebApplication.Controllers
                 }
             }
 
-            return View(profile);
+            // Redirect to home is user could not be validated
+            return RedirectToAction("Index", "Home");
         }
+
 
     }
 }

@@ -40,7 +40,8 @@ In order to verify your git bundle, you can un-bundle the repo by cloning the bu
 
 
 # Write Up
-0. Studied codebase and to understand enviroment and made strong effort to follow coding handwriting of thos before me
+0. Studied codebase and to understand enviroment and made strong effort to follow coding handwriting of those before me
+
 1. Fixed search profiles text box by adjusting height to match image
 2. Fixed profile information bug by refactoring ProfileCollection.cs/GetProfile()
 3. Fixed non-number ID in URL bug by redirecting to home page
@@ -55,3 +56,6 @@ In order to verify your git bundle, you can un-bundle the repo by cloning the bu
 10. Populated User credentials in ProfileCollection and added validation method
 11. Added Login/Logout functionality to ProfileController
 12. Created Login View
+
+13. Added Edit Profile View, only appears when logged in
+14. Added Edit (get) and Edit(post) methods for user account modification in ProfileController
